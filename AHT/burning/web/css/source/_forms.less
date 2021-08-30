@@ -1,0 +1,356 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@legend-border-bottom: 1px solid @color-gray-light6;
+@form-field__vertical-indent__desktop: 29px;
+@form-calendar-icon__color: @primary__color;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .fieldset {
+        .lib-form-fieldset();
+
+        &:last-child {
+            margin-bottom: @indent__base;
+        }
+
+        > .field,
+        > .fields > .field {
+            .lib-form-field();
+            &.no-label {
+                > .label {
+                    .lib-visually-hidden();
+                }
+            }
+
+            &.choice {
+                .label {
+                    display: inline;
+                    font-weight: normal;
+                    margin: 0;
+                }
+            }
+
+            .label {
+                .column:not(.main) & {
+                    font-weight: normal;
+                }
+            }
+
+            .field.choice {
+                margin-bottom: @indent__s;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .legend + .fieldset,
+    .legend + div {
+        clear: both;
+    }
+
+    .legend {
+        > span {
+            margin-right: @indent__xs;
+        }
+    }
+
+    fieldset.field {
+        border: 0;
+        padding: 0;
+    }
+
+    .field {
+        &.date {
+            .time-picker {
+                display: inline-block;
+                margin-top: @indent__s;
+                white-space: nowrap;
+            }
+        }
+
+        .message {
+            &.warning {
+                margin-top: @indent__s;
+            }
+        }
+    }
+
+    .select-styling() {
+        .lib-css(appearance, none, 1);
+        appearance: none;
+        background-size: 30px 60px;
+        text-indent: .01em;
+        text-overflow: '';
+
+        &::-ms-expand {
+            display: none;
+        }
+    }
+
+    select {
+        .select-styling();
+    }
+
+    select.admin__control-multiselect {
+        height: auto;
+    }
+
+    .field-error,
+    div.mage-error[generated] {
+        margin-top: 7px;
+    }
+
+    .field-error {
+        .lib-form-validation-note();
+    }
+
+    .product-options-wrapper {
+        .date {
+            &.required {
+                div[for*='options'] {
+                    &.mage-error {
+                        display: none !important;
+                    }
+                }
+            }
+        }
+    }
+
+    //  TEMP
+
+    .field .tooltip {
+        .lib-tooltip(right);
+        .tooltip-content {
+            min-width: 200px;
+            white-space: normal;
+        }
+    }
+
+    input:focus ~ .tooltip .tooltip-content,
+    select:focus ~ .tooltip .tooltip-content {
+        display: block;
+    }
+
+    ._has-datepicker {
+        ~ .ui-datepicker-trigger {
+            .lib-button-reset();
+            .lib-icon-font(
+            @_icon-font-content: @icon-calendar,
+            @_icon-font-color: @primary__color__lighter,
+            @_icon-font-size: @icon-calendar__font-size,
+            @_icon-font-line-height: @icon-calendar__font-size,
+            @_icon-font-display: block,
+            @_icon-font-text-hide: true
+            );
+            display: inline-block;
+            margin-top: -4px;
+            vertical-align: middle;
+
+            &:focus {
+                box-shadow: none;
+                outline: 0;
+            }
+        }
+    }
+
+    .field.date,
+    .field-dob {
+        ._has-datepicker {
+            &:extend(.abs-field-date-input all);
+        }
+    }
+
+    //
+    //  Sidebar forms
+    //  ---------------------------------------------
+
+    .sidebar {
+        .fieldset {
+            margin: 0;
+
+            > .field:not(.choice) >,
+            .fields > .field {
+                &:not(:last-child) {
+                    margin: 0 0 @form-field__vertical-indent;
+                }
+
+                .label {
+                    margin: 0 0 4px;
+                    padding: 0 0 @indent__xs;
+                    text-align: left;
+                    width: 100%;
+                }
+
+                .control {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    // custom style guide 
+    input[type="checkbox"] {
+        .lib-form-element-choice(@_type: input-checkbox);
+        .lib-css(top, 6px);
+        .lib-css(left, 30px);
+        .lib-css(z-index, 100);
+        .lib-css(width, 20px);
+        .lib-css(height, 20px);
+        &:disabled {
+            .lib-css(opacity, 0);
+        }
+    }
+    input[type="radio"] {
+        .lib-form-element-choice(@_type: input-radio);
+        .lib-css(z-index, 100);
+        .lib-css(width, 20px);
+        .lib-css(height, 20px);
+        &:disabled {
+            .lib-css(opacity, 0);
+        }
+    }
+
+    // form style guide
+    .checkbox,
+    .radio {
+        .lib-css(position, absolute);
+        .lib-css(opacity, 0);
+    
+        & + .label {
+        .lib-css(position, relative);
+        .lib-css(cursor, pointer);
+        .lib-css(padding, 0);
+        }
+        
+        &:disabled + .label {
+        .lib-css(color, @_color-b8b8b8);
+        .lib-css(cursor, auto);
+        }
+    
+        &:disabled + .label {
+            &:before {
+                .lib-css(box-shadow, none);
+                .lib-css(background, @color-gray-light01);
+            }
+        }
+    }
+    // form style guide
+
+    //checkbox
+    .checkbox {
+        & + .label {
+            &:before {
+                content: '';
+                .lib-css(margin-right, 10px);
+                .lib-css(display, inline-block);
+                .lib-css(vertical-align, text-top);
+                .lib-css(width, 18px);
+                .lib-css(height, 18px);
+                .lib-css(background, white);
+                border: 1px solid @_color-dddddd;
+            }
+        }
+
+        &:checked + .label,
+        &:hover + .label {
+            &:after {
+                content: '';
+                .lib-css(position, absolute);
+                .lib-css(left, 5px);
+                .lib-css(top, 9px);
+                .lib-css(background, @_color-2d2d2f);
+                .lib-css(width, 2px);
+                .lib-css(height, 2px);
+                box-shadow: 
+                    2px 0 0 @_color-2d2d2f,
+                    4px 0 0 @_color-2d2d2f,
+                    4px -2px 0 @_color-2d2d2f,
+                    4px -4px 0 @_color-2d2d2f,
+                    4px -6px 0 @_color-2d2d2f,
+                    4px -8px 0 @_color-2d2d2f;
+                transform: rotate(45deg);
+            }
+        }
+
+        &:disabled {
+            pointer-events: none;
+            &:checked + .label {
+            &:after {
+                .lib-css(background, @_color-dddddd);
+                box-shadow: 
+                    2px 0 0 @_color-dddddd
+                    4px 0 0 @_color-dddddd
+                    4px -2px 0 @_color-dddddd
+                    4px -4px 0 @_color-dddddd
+                    4px -6px 0 @_color-dddddd
+                    4px -8px 0 @_color-dddddd;
+                }
+            }
+        }
+    }
+    //checkbox
+
+    //radio
+    .radio {
+        & + .label {
+            &:before {
+                content: '';
+                .lib-css(margin-right, 10px);
+                .lib-css(display, inline-block);
+                .lib-css(vertical-align, text-top);
+                .lib-css(width, 18px);
+                .lib-css(height, 18px);
+                .lib-css(background, white);
+                border: 1px solid @_color-dddddd;
+                .lib-css(border-radius, 50%);
+            }
+        }
+
+        &:checked + .label,
+        &:hover + .label {
+            &:after {
+                content: '';
+                .lib-css(position, absolute);
+                .lib-css(left, 5px);
+                .lib-css(top, 5px);
+                .lib-css(background, @_color-2d2d2f);
+                .lib-css(width, 10px);
+                .lib-css(height, 10px);
+                .lib-css(border-radius, 50%);
+            }
+        }
+
+        &:disabled {
+            pointer-events:none;
+            &:checked + .label {
+            &:after {
+                .lib-css(background, @_color-dddddd);
+                }
+            }
+        }
+    }
+    //radio 
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .legend {
+        .lib-css(border-bottom, @legend-border-bottom);
+    }
+}

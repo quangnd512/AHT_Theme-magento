@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src='css/lib/font-awesome/fontawesome.min.css'/>
+        <css src='css/lib/fontawesome-free-5.15.3-web/css/all.min.css'/>
+        <css src='css/lib/line-awesome/line-awesome.min.css'/>
+        <!-- <css src='css/lib/slick/slick-theme.less'/>
+        <css src='css/lib/slick/slick.less'/> -->
+        <script src="js/quantity.js"/>
+    </head>
+</page>

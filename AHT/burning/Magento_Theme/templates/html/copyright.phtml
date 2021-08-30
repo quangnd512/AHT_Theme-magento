@@ -1,0 +1,24 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<div class="footer-copyright">
+    <small class="copyright">
+        <?php 
+            echo $block->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('footer-copyright')
+            ->toHtml();
+        ?>
+    </small>
+    <div class="payment">
+        <?php 
+            echo $block->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('footer-payment')
+            ->toHtml();
+        ?>
+    </div>    
+</div>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header.links" remove="true" />
+        <referenceBlock name="currency" remove="true"/>
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="store_switcher" remove="true"/>
+
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Template" name="header-top" before="-" template="Magento_Theme::header-top.phtml" />
+            <container name="header-top-right" htmlTag="div" after="cms-footer-top" htmlClass="header-top-desktop-right">
+                <block class="Magento\Framework\View\Element\Template" name="header.top.links" template="Magento_Theme::header/top/links.phtml" />
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="footer-container">
+        <container name="footer-top" htmlTag="div" after="footer-container" htmlClass="footer-top">
+            <block class="Magento\Framework\View\Element\Template" name="cms-footer-top" before="-" template="Magento_Theme::footer-top.phtml" />
+        </container>
+        <container name="footer-top-banner" htmlTag="div" after="cms-footer-top" htmlClass="footer-banner">
+            <block class="Magento\Framework\View\Element\Template" name="cms-footer-top-banner" before="-" template="Magento_Theme::footer-top-banner.phtml" />
+        </container>
+        <container name="footer-middle" htmlTag="div" after="footer-top-banner" htmlClass="footer-middle">
+            <block class="Magento\Framework\View\Element\Template" name="cms-footer-middle" before="-" template="Magento_Theme::footer-middle.phtml" />
+        </container>
+        <container name="footer-buttom" htmlTag="div" after="footer-middle" htmlClass="footer-buttom">
+            <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="Magento_Theme::html/copyright.phtml"/>
+        </container>
+        </referenceContainer>
+
+
+        <referenceContainer name="footer">
+            <block class="Magento\Framework\View\Element\Template" name="footer.lish" template="Magento_Theme::footer/lish.phtml" />
+        </referenceContainer>
+
+        <move element="footer" destination="footer-buttom"  before="copyright" />
+        <move element="form.subscribe" destination="footer" after="footer.lish"/>
+        <move element="top.links" destination="header-top-right" after="-"/>
+    </body>
+</page>

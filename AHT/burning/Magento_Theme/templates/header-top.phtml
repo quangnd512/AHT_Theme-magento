@@ -1,0 +1,21 @@
+<!-- header top desktop -->
+
+<div class="header-top-desktop-left">
+    <?php 
+    echo $block->getLayout()
+        ->createBlock('Magento\Cms\Block\Block')
+        ->setBlockId('header-top-left')
+        ->toHtml();
+    ?>
+</div>
+
+<div class="header-top-desktop-middle">
+    <?php 
+        echo $block->getLayout()
+        ->createBlock('Magento\Cms\Block\Block')
+        ->setBlockId('header-top-middle')
+        ->toHtml();
+    ?>
+</div>
+
+<!-- header top desktop -->
